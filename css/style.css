@@ -733,3 +733,93 @@ p{color:var(--muted);line-height:1.8}
   0%, 100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.1); }
   50% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.25); }
 }
+
+/* ══ WIRE N GO CUSTOM VISUAL GRAPHICS & INTERACTION STYLES ══ */
+.flat-selector-wrap {
+  margin: 18px 0 24px;
+  position: relative;
+  z-index: 20;
+}
+.flat-pill {
+  padding: 10px 18px;
+  border-radius: 28px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px solid rgba(0, 229, 255, 0.4);
+  color: #e2e8f0;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 25;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+.flat-pill:hover {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: #00e5ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.35);
+}
+.flat-pill.active {
+  background: linear-gradient(135deg, #1d4ed8 0%, #00e5ff 100%) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.5) !important;
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Category Graphic Cards */
+.cat-graphic-card {
+  background: linear-gradient(145deg, #0e172a 0%, #1e293b 100%);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.cat-graphic-card:hover {
+  transform: translateY(-6px);
+  border-color: #00e5ff;
+  box-shadow: 0 16px 35px rgba(0, 229, 255, 0.25);
+}
+.cat-graphic-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* Pulse Glow & Electric Circuit Animations */
+@keyframes wireWaveFlow {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes sparkRun {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes neonSurge {
+  0%, 100% { filter: drop-shadow(0 0 5px #00e5ff) drop-shadow(0 0 12px #2563eb); }
+  50% { filter: drop-shadow(0 0 12px #00e5ff) drop-shadow(0 0 24px #2563eb); }
+}

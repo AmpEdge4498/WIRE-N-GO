@@ -88,14 +88,14 @@ window.mockElectricians = [
   { id: 'E11', name: 'Sanjay Gupta', rating: 4.5, jobs: 310, exp: 4, baseRate: 350, city: 'Delhi NCR', distance: 3.8, avatar: 'S', color: '#ef4444' }
 ];
 
-window.getWireNGoServices = window.getWIRE N GOServices = () => {
+window.getWireNGoServices = window.getWireNGoServices = () => {
   const data = localStorage.getItem('wirengo_services');
   if (data) return JSON.parse(data).filter(s => s.active);
   localStorage.setItem('wirengo_services', JSON.stringify(defaultServices));
   return defaultServices;
 };
 
-window.getWireNGoProducts = window.getWIRE N GOProducts = () => {
+window.getWireNGoProducts = window.getWireNGoProducts = () => {
   try {
     const data = localStorage.getItem('wirengo_products');
     if (data) {
@@ -225,7 +225,7 @@ function renderBookingServices() {
   const container = document.getElementById('serviceChipsContainer');
   if (!container) return; // not on booking page
   
-  let services = window.getWIRE N GOServices();
+  let services = window.getWireNGoServices();
   
   // Parse query parameters for service selection on load
   const params = new URLSearchParams(window.location.search);
@@ -294,7 +294,7 @@ function renderRecommendedProducts() {
   
   if (!currentSelectedService) return;
   
-  const allProducts = window.getWIRE N GOProducts();
+  const allProducts = window.getWireNGoProducts();
   let recommendedIds = [];
   
   // Map service category/ID to products
@@ -338,7 +338,7 @@ function renderRecommendedProducts() {
 }
 
 window.toggleAddonProduct = (id) => {
-  const allProducts = window.getWIRE N GOProducts();
+  const allProducts = window.getWireNGoProducts();
   const prod = allProducts.find(p => p.id === id);
   if (!prod) return;
   
@@ -427,7 +427,7 @@ function chipSel(el) {
   el.classList.add('selected');
   
   const sid = el.getAttribute('data-id');
-  const services = window.getWIRE N GOServices();
+  const services = window.getWireNGoServices();
   const matched = services.find(s => s.id === sid);
   if (matched) {
     currentSelectedService = matched;
@@ -571,8 +571,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.renderHomeDynamicSections = () => {
-  const services = window.getWIRE N GOServices();
-  const products = window.getWIRE N GOProducts();
+  const services = window.getWireNGoServices();
+  const products = window.getWireNGoProducts();
 
   // 1. Hero Dashboard (Live Service Dashboard)
   const heroDash = document.querySelector('.hero-main-card');
@@ -671,7 +671,7 @@ function renderMarketplaceProducts() {
   const grid = document.getElementById('productGrid');
   if (!grid) return; // Not on marketplace page
 
-  const products = window.getWIRE N GOProducts();
+  const products = window.getWireNGoProducts();
   
   const filtered = products.filter(p => {
     // filter by search term
@@ -1182,8 +1182,8 @@ function getProductCategoryUrl(category) {
 }
 
 function getBudgetRecommendations(limit, lang) {
-  const products = window.getWIRE N GOProducts ? window.getWIRE N GOProducts() : defaultProducts;
-  const services = window.getWIRE N GOServices ? window.getWIRE N GOServices() : defaultServices;
+  const products = window.getWireNGoProducts ? window.getWireNGoProducts() : defaultProducts;
+  const services = window.getWireNGoServices ? window.getWireNGoServices() : defaultServices;
   
   const matchingProducts = products.filter(p => p.basePrice <= limit);
   const matchingServices = services.filter(s => s.basePrice <= limit);
@@ -3308,7 +3308,7 @@ let currentAuthMethod = 'google'; // 'google', 'phone', 'email'
 let isOtpSent = false;
 
 // Helper to get authenticated user
-window.getWIRE N GOAuthUser = function() {
+window.getWireNGoAuthUser = function() {
   try {
     const raw = localStorage.getItem('wirengo_auth_user');
     return raw ? JSON.parse(raw) : null;
@@ -3745,7 +3745,7 @@ document.addEventListener('click', () => {
 
 // Render Dynamic Navbar State with Small Person Icon Next to Shop Now
 window.renderAuthNavbar = function() {
-  const user = window.getWIRE N GOAuthUser();
+  const user = window.getWireNGoAuthUser();
   const navRights = document.querySelectorAll('.nav-right');
   
   navRights.forEach(nav => {
@@ -3811,7 +3811,7 @@ window.renderAuthNavbar = function() {
 
 // Open Interactive User Dashboard Modal
 window.openUserDashboardModal = function() {
-  const user = window.getWIRE N GOAuthUser();
+  const user = window.getWireNGoAuthUser();
   if (!user) {
     openAuthModal('customer', 'signin');
     return;
@@ -3905,7 +3905,7 @@ window.closeUserDashboardModal = function() {
 };
 
 // Initialize all components safely
-function initWIRE N GOApp() {
+function initWireNGoApp() {
   if (typeof window.ensureAuthModalInDOM === 'function') window.ensureAuthModalInDOM();
   if (typeof window.renderAuthNavbar === 'function') window.renderAuthNavbar();
   if (typeof window.renderMarketplaceProducts === 'function') window.renderMarketplaceProducts();
@@ -3915,11 +3915,11 @@ function initWIRE N GOApp() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initWIRE N GOApp);
+  document.addEventListener('DOMContentLoaded', initWireNGoApp);
 } else {
-  initWIRE N GOApp();
+  initWireNGoApp();
 }
-window.addEventListener('load', initWIRE N GOApp);
+window.addEventListener('load', initWireNGoApp);
 
 
 // ── WIRE N GO Interactive Flat & Property Selector ───────────
