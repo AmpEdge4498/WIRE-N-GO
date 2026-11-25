@@ -9,7 +9,7 @@ WIRE N GO is India's premier electrical services and product marketplace platfor
 
 ## 🌐 Live Website (GitHub Pages)
 
-👉 [https://rittickd23-alt.github.io/wire-n-go/](https://rittickd23-alt.github.io/wire-n-go/)
+👉 [https://ampedge4498.github.io/WIRE-N-GO/](https://ampedge4498.github.io/WIRE-N-GO/)
 
 ---
 
