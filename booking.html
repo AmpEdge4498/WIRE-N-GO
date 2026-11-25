@@ -99,27 +99,27 @@
       <h3 class="step-title">Select Property Details</h3>
       <p style="color:var(--muted); font-size:13px; margin-top:-6px; margin-bottom:16px;">Choose your property type to customize setup charges and wiring calculations.</p>
       
-      <!-- Property Type Cards -->
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap:12px; margin-bottom:20px;">
-        <div class="prop-card active" id="prop-card-house" onclick="setPropertyType('house')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
-          <div style="font-size:28px; margin-bottom:6px">🏠</div>
-          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">House</div>
-        </div>
-        <div class="prop-card" id="prop-card-apartment" onclick="setPropertyType('apartment')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
+      <!-- Property Type Cards (100% B2C Residential Homes & Flats) -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-bottom:20px;">
+        <div class="prop-card active" id="prop-card-1bhk" onclick="setPropertyType('1bhk')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
           <div style="font-size:28px; margin-bottom:6px">🏢</div>
-          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Apartment</div>
+          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">1 BHK Flat</div>
         </div>
-        <div class="prop-card" id="prop-card-office" onclick="setPropertyType('office')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
-          <div style="font-size:28px; margin-bottom:6px">💼</div>
-          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Office</div>
+        <div class="prop-card" id="prop-card-2bhk" onclick="setPropertyType('2bhk')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
+          <div style="font-size:28px; margin-bottom:6px">🏠</div>
+          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">2 BHK Flat</div>
         </div>
-        <div class="prop-card" id="prop-card-store" onclick="setPropertyType('store')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
-          <div style="font-size:28px; margin-bottom:6px">🏪</div>
-          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Store</div>
+        <div class="prop-card" id="prop-card-3bhk" onclick="setPropertyType('3bhk')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
+          <div style="font-size:28px; margin-bottom:6px">🏰</div>
+          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">3 BHK / Duplex</div>
         </div>
-        <div class="prop-card" id="prop-card-industrial" onclick="setPropertyType('industrial')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
-          <div style="font-size:28px; margin-bottom:6px">🏭</div>
-          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Industrial</div>
+        <div class="prop-card" id="prop-card-house" onclick="setPropertyType('house')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
+          <div style="font-size:28px; margin-bottom:6px">🏡</div>
+          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Independent House</div>
+        </div>
+        <div class="prop-card" id="prop-card-society" onclick="setPropertyType('society')" style="padding:14px; border:1px solid var(--border2); border-radius:12px; text-align:center; cursor:pointer; background:#fff;">
+          <div style="font-size:28px; margin-bottom:6px">🏘️</div>
+          <div style="font-size:12.5px; font-weight:800; color:var(--text-dark)">Housing Society</div>
         </div>
       </div>
 
@@ -253,7 +253,7 @@
       <div class="step-pill" style="background:var(--blue); color:white">Priority Callback</div>
       <h3 class="step-title" style="margin-top:8px">Request Priority Callback Quote</h3>
       <p style="color:var(--muted); font-size:13.5px; line-height:1.6; margin-bottom:20px">
-        Apartment towers, offices, retail stores, and industrial units have complex distribution board, safety breaker, and wiring layouts. 
+        Residential apartment flats (1BHK, 2BHK, 3BHK), duplexes, and independent homes have specialized distribution board, safety breaker, and wiring layouts. 
         Please share your contact details and requirements below. Our technical estimator will contact you immediately with a custom quote.
       </p>
       
@@ -393,7 +393,7 @@
         <li><a href="booking.html?select=installation">Installation</a></li>
         <li><a href="booking.html?select=repair">Repair</a></li>
         <li><a href="booking.html?select=maintenance">Maintenance</a></li>
-        <li><a href="booking.html?select=industrial">Industrial Service</a></li>
+        <li><a href="booking.html?select=flat-inspection">Flat Inspection</a></li>
         <li><a href="booking.html?select=smarthome">Smart Home</a></li>
         <li><a href="booking.html?select=solar">Solar Installation</a></li>
         <li><a href="booking.html?select=emergency">Emergency</a></li>

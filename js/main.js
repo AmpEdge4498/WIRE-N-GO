@@ -3,7 +3,7 @@
    ============================================ */
 
 // ── Data Version: force trigger build for restored stable state ──
-const WIRENGO_DATA_VERSION = '10.0';
+const WIRENGO_DATA_VERSION = '11.0';
 if (localStorage.getItem('wirengo_data_ver') !== WIRENGO_DATA_VERSION) {
   localStorage.removeItem('wirengo_services');
   localStorage.removeItem('wirengo_products');
@@ -33,7 +33,7 @@ const defaultProducts = [
   // Wires & Cables
   { id: 'p1', name: 'Finolex FR PVC Wire 1.5 sq mm', description: '90m Coil • 100% Pure Electrolytic Copper wire with fire retardant insulation.', category: 'WIRES_CABLES', brand: 'Finolex', basePrice: 1899, stock: 45, active: true, image: 'images/product_wire_finolex.svg' },
   { id: 'p2', name: 'Polycab FlameGuard 2.5 sq mm', description: '90m Coil • Heavy duty flame retardant copper wire for high wattage appliances.', category: 'WIRES_CABLES', brand: 'Polycab', basePrice: 2499, stock: 35, active: true, image: 'images/product_wire_polycab.svg' },
-  { id: 'p3', name: 'Havells LifeLine Plus 4.0 sq mm', description: 'HRFR heat-resistant industrial & heavy load wiring for AC/Geysers.', category: 'WIRES_CABLES', brand: 'Havells', basePrice: 3899, stock: 25, active: true, image: 'images/product_wire_havells.svg' },
+  { id: 'p3', name: 'Havells LifeLine Plus 4.0 sq mm', description: 'HRFR heat-resistant heavy residential appliance wiring for AC/Geyser for AC/Geysers.', category: 'WIRES_CABLES', brand: 'Havells', basePrice: 3899, stock: 25, active: true, image: 'images/product_wire_havells.svg' },
   { id: 'p4', name: 'Solar DC Cable 4.0 sq mm', description: 'UV protected dual-insulated tinned copper rooftop solar wire.', category: 'WIRES_CABLES', brand: 'Solar Max', basePrice: 1299, stock: 60, active: true, image: 'images/product_wire_solar.svg' },
   { id: 'p5', name: 'Anchor 1.0 sq mm Flexible Wire', description: 'Multi-strand pure copper lighting wire for home electrical conduits.', category: 'WIRES_CABLES', brand: 'Anchor', basePrice: 1199, stock: 50, active: true, image: 'images/product_wire_anchor.svg' },
 
@@ -238,8 +238,8 @@ function renderBookingServices() {
       services = services.filter(s => s.category === 'REPAIR');
     } else if (query === 'maintenance') {
       services = services.filter(s => s.name.toLowerCase().includes('maintenance') || s.description.toLowerCase().includes('maintenance'));
-    } else if (query === 'industrial') {
-      services = services.filter(s => s.category === 'COMMERCIAL' || s.name.toLowerCase().includes('industrial') || s.description.toLowerCase().includes('industrial'));
+    } else if (query === 'flat-inspection' || query === 'flat') {
+      services = services.filter(s => s.name.toLowerCase().includes('flat') || s.name.toLowerCase().includes('wiring') || s.description.toLowerCase().includes('home') || s.description.toLowerCase().includes('inspection'));
     } else if (query === 'smarthome') {
       services = services.filter(s => s.name.toLowerCase().includes('smart home') || s.description.toLowerCase().includes('smart'));
     } else if (query === 'solar') {
@@ -1143,7 +1143,7 @@ console.log('%c⚡ WIRE N GO — Premium Website Loaded', 'font-family:system-ui
 const wirengoKB = [
   // Greetings
   { keys: ['hello','hi','hey','good morning','good evening','good afternoon','namaste','hola'],
-    reply: "Hello! 👋 Welcome to WIRE N GO Solutions — India's premier electrical services and product marketplace. How can I help you today? You can ask me about our services, marketplace products, partnership programs, subscription plans, contact numbers, or WhatsApp support!" },
+    reply: "Hello! 👋 Welcome to WIRE N GO — India's premier B2C on-demand electrical platform for flats (1BHK, 2BHK, 3BHK) and residential homes. How can I help you today? You can ask me about our services, marketplace products, partnership programs, subscription plans, contact numbers, or WhatsApp support!" },
   // Services
   { keys: ['service','services','what do you do','what you do','offerings','offer','repair','installation','wiring','install','mcb','switchboard','board','wiring repair','mcb setup','smart home hub','emergency visit','light installation','fan installation'],
     reply: "⚡ **WIRE N GO Professional Services:**\n\n• 🪢 **Wiring Repair** — Fix faulty wires & circuits. Starting at **₹499**.\n• 🔌 **MCB Setup** — Install DB boards & MCBs. Starting at **₹2,299**.\n• 🏠 **Smart Home Hub** — Automated lighting & switches. Starting at **₹4,999**.\n• 🚨 **Emergency Visit** — 24/7 urgent repair dispatch. Starting at **₹899**.\n• ☀️ **Solar Panel Installation** — Rooftop panels & net metering. Starting at **₹12,999**.\n• 🛠️ **Solar Maintenance** — cleaning & inverter check. Starting at **₹1,499**.\n• 📋 **Solar Rooftop Survey** — kW capacity planning. Starting at **₹299**.\n\nAll services include a **90-day warranty**. Book a service on our <a href='booking.html' style='color:#4169E1;font-weight:700'>Services Page</a>!" },
@@ -2387,18 +2387,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize points based on theme
     if (theme === 'home') {
-      // 3D Helix / Electric grid mesh
-      for (let i = 0; i < 40; i++) {
-        const t = (i / 40) * Math.PI * 6;
-        const x1 = Math.cos(t) * 110;
-        const y1 = (i - 20) * 10;
-        const z1 = Math.sin(t) * 110;
-        points.push({ x: x1, y: y1, z: z1, color: '#4169E1' });
-
-        const x2 = Math.cos(t + Math.PI) * 110;
-        const y2 = (i - 20) * 10;
-        const z2 = Math.sin(t + Math.PI) * 110;
-        points.push({ x: x2, y: y2, z: z2, color: '#5CE1E6' });
+      // ⚡ WIRE N GO Electric Wire Surge & High-Speed Current Nodes
+      const wireCount = 5;
+      for (let w = 0; w < wireCount; w++) {
+        const yOffset = (w - 2) * 55;
+        const color = (w % 2 === 0) ? '#00e5ff' : '#2563eb';
+        const startIdx = points.length;
+        for (let i = 0; i <= 24; i++) {
+          const t = (i / 24) * Math.PI * 4;
+          const x = (i - 12) * 28;
+          const y = Math.sin(t + w * 0.8) * 35 + yOffset;
+          const z = Math.cos(t + w * 0.8) * 45;
+          points.push({ x: x, y: y, z: z, color: color, size: (i % 4 === 0 ? 4 : 2) });
+          if (i > 0) {
+            lines.push([points.length - 2, points.length - 1]);
+          }
+        }
       }
     } else if (theme === 'marketplace') {
       // 3D cargo / product boxes and nodes floating
@@ -3917,3 +3921,45 @@ if (document.readyState === 'loading') {
 }
 window.addEventListener('load', initWIRE N GOApp);
 
+
+// ── WIRE N GO Interactive Flat & Property Selector ───────────
+window.selectFlatType = function(type, btn) {
+  if (btn) {
+    document.querySelectorAll('.flat-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  const title = document.getElementById('dashPropertyTitle');
+  const sub = document.getElementById('dashPropertySub');
+  const s1n = document.getElementById('dashSvc1Name');
+  const s1p = document.getElementById('dashSvc1Price');
+  const s2n = document.getElementById('dashSvc2Name');
+  const s2p = document.getElementById('dashSvc2Price');
+  const s3n = document.getElementById('dashSvc3Name');
+  const s3p = document.getElementById('dashSvc3Price');
+
+  if (type === '1bhk') {
+    if (title) title.innerText = '1 BHK Flat — Live Estimate';
+    if (sub) sub.innerText = 'Doorstep technician in 25–30 mins';
+    if (s1n) s1n.innerText = 'Complete Flat Wiring Audit'; if (s1p) s1p.innerText = '₹299';
+    if (s2n) s2n.innerText = 'Modular Switchboard Repair'; if (s2p) s2p.innerText = '₹149';
+    if (s3n) s3n.innerText = 'MCB Tripping / Short Circuit Fix'; if (s3p) s3p.innerText = '₹349';
+  } else if (type === '2bhk') {
+    if (title) title.innerText = '2 BHK Flat — Live Estimate';
+    if (sub) sub.innerText = 'Doorstep technician in 25–30 mins';
+    if (s1n) s1n.innerText = '2BHK Comprehensive Inspection'; if (s1p) s1p.innerText = '₹399';
+    if (s2n) s2n.innerText = 'Concealed Wiring & Socket Repair'; if (s2p) s2p.innerText = '₹249';
+    if (s3n) s3n.innerText = 'AC Point & Heavy Load Connection'; if (s3p) s3p.innerText = '₹499';
+  } else if (type === '3bhk') {
+    if (title) title.innerText = '3 BHK Flat / Duplex — Live Estimate';
+    if (sub) sub.innerText = 'Doorstep technician in 30 mins';
+    if (s1n) s1n.innerText = '3BHK Complete Home Electrical Audit'; if (s1p) s1p.innerText = '₹599';
+    if (s2n) s2n.innerText = 'DB Box Overhaul & Neutral Balancing'; if (s2p) s2p.innerText = '₹499';
+    if (s3n) s3n.innerText = 'Smart Home Hub & False Ceiling Lights'; if (s3p) s3p.innerText = '₹1,299';
+  } else if (type === 'house') {
+    if (title) title.innerText = 'Independent House / Villa — Live Estimate';
+    if (sub) sub.innerText = 'Doorstep technician in 30–35 mins';
+    if (s1n) s1n.innerText = 'Full Villa Ground-to-Roof Inspection'; if (s1p) s1p.innerText = '₹799';
+    if (s2n) s2n.innerText = 'Main Service Line & DB Panel Setup'; if (s2p) s2p.innerText = '₹899';
+    if (s3n) s3n.innerText = 'Inverter, Battery & Solar Wiring Connection'; if (s3p) s3p.innerText = '₹1,499';
+  }
+};

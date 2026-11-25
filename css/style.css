@@ -688,3 +688,48 @@ p{color:var(--muted);line-height:1.8}
   padding-left: 54px !important;
 }
 
+
+/* ══ WIRE N GO B2C RESIDENTIAL & FLAT SELECTOR STYLES ══ */
+.flat-selector-wrap {
+  margin: 18px 0 24px;
+}
+.flat-pill {
+  padding: 8px 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(92, 225, 230, 0.35);
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+}
+.flat-pill:hover {
+  background: rgba(92, 225, 230, 0.2);
+  border-color: #5ce1e6;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(92, 225, 230, 0.3);
+}
+.flat-pill.active {
+  background: linear-gradient(135deg, #2563eb 0%, #00e5ff 100%);
+  border-color: transparent;
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.45);
+  transform: translateY(-2px);
+}
+/* WIRE N GO Speed Circuit Keyframes */
+@keyframes wireSurge {
+  0% { stroke-dashoffset: 800; opacity: 0.3; }
+  50% { opacity: 1; filter: drop-shadow(0 0 10px #00e5ff); }
+  100% { stroke-dashoffset: 0; opacity: 0.8; }
+}
+@keyframes neonPulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.25); }
+}
